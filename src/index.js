@@ -1,10 +1,18 @@
 import express from "express";
 import txRoutes from "./routes/tx.route.js";
 import dotenv from "dotenv";
+import cors from "cors";
 
 dotenv.config({ path: "./env" });
 
 const app = express();
+
+app.use(
+    cors({
+        origin: process.env.CORS_ORIGIN,
+        credentials: true,
+    })
+);
 
 app.use(express.json());
 app.use("/api/tx", txRoutes);
