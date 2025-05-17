@@ -15,6 +15,11 @@ app.use(
 );
 
 app.use(express.json());
+
+app.use("/", (req, res) => {
+    res.send({ statusCode: 200, status: "OK" });
+});
+
 app.use("/api/tx", txRoutes);
 
 const PORT = process.env.PORT;
